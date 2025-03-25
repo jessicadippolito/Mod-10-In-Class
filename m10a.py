@@ -38,16 +38,18 @@ class Coordinate:
         self.y = y
 
     def __eq__(self,other):
-        if self.x == other.x:
-            if self.y == other.y:
-                return True
-        else:
-            return False
+        if isinstance(other,Coordinate):
+            if self.x == other.x:
+                if self.y == other.y:
+                    return True
+            else:
+                return False
 
     def __add__(self,other):
-        new_x = self.x + other.x
-        new_y = self.y + other.y
-        return Coordinate(new_x,new_y)
+        if isinstance(other, Coordinate):
+            new_x = self.x + other.x
+            new_y = self.y + other.y
+            return Coordinate(new_x,new_y)
 
     def __str__(self):
         return f'({self.x}, {self.y})'
